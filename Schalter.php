@@ -4,12 +4,9 @@ class Schalter {
     
     public $data;
     
-    public function __construct($json, $domain = null, $identity = null)
+    public function __construct($json, $identity = null)
     {
         $remote = json_decode(file_get_contents($json), true);
-        if($remote[$domain]) {
-            $this->data = $remote[$domain];   
-        }
         if($remote[$identity]) {
             $this->data = $remote[$identity];   
         }
