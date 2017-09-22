@@ -6,26 +6,26 @@ Create json file inside your server:
 
 ```json
 {  
-   "identity":{  
+   "client-domain.com":{  
       "allow":true,
       "message":"Internal Server Error. Please contact your developer"
    },
-   "client-domain.com":{  
-      "allow":true,
+   "otherclient-domain.com":{  
+      "allow":false,
       "message":"Internal Server Error. Please contact your developer"
    }
 }
 ```
 
-Put this code inside your clients server:
+Upload the source inside your client's server and put this code somewhere (entry file, theme file etc):
 
-Ex: (Inside index.php)
+Ex: (Inside index.php entry file)
 
 ```php
 
 include 'Schalter.php';
 
-$subscriptions = new Schalter('http://yourdomain.com/data.json', 'identity');
+$subscriptions = new Schalter('http://yourdomain.com/data.json', 'client-domain.com');
 $subscription = $subscriptions->data;
 
 if($subscription && $subscription['allow'] != 1) {
